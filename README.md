@@ -50,11 +50,13 @@ Installs and manages python, python-dev, python-virtualenv and Gunicorn.
 
 Installs and manages packages from pip.
 
+**name** - name of pip package
+
 **ensure** - present/latest/absent. Default: present
 
 **virtualenv** - virtualenv to run pip in. Default: system (no virtualenv)
 
-**url** - URL to install from. Default: none
+**url** - URL to install from. Used for VCS installations(git,hg,svn,etc) Default: none
 
 **owner** - The owner of the virtualenv to ensure that packages are installed with the correct permissions (must be specified). Default: root
 

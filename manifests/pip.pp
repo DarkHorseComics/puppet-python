@@ -29,6 +29,10 @@
 #   proxy      => 'http://proxy.domain.com:3128',
 # }
 #
+# python::pip { 'flask':
+#   url => 'git+git://github.com/mitsuhiko/flask',
+# }
+#
 # === Authors
 #
 # Sergey Stankevich
@@ -53,6 +57,10 @@ define python::pip (
 
   if $virtualenv == 'system' and $owner != 'root' {
     fail('python::pip: root user must be used when virtualenv is system')
+  }
+
+  if $name =~ /(http|https|git|svn|hg):\/\// {
+    fail('Name must be the egg name of the package. Use url for module location(git, ssh, etc)')
   }
 
   $cwd = $virtualenv ? {
